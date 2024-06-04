@@ -7,9 +7,11 @@ from Leaf Images: Multi-prediction Approaches".
 Please modify the parameters at here, then run main.py.
 '''
 
-dataset_dir = '/home/user/Leaf_diseases/Datasets/'  # please change the path of the datasets. 
-save_path = '/home/user/Leaf_diseases/test_model/'    # please change the path of results and model will be saved.
+# dataset_dir = '/home/user/Leaf_diseases/Datasets/'  # please change the path of the datasets. 
+# save_path = '/home/user/Leaf_diseases/test_model/'    # please change the path of results and model will be saved.
 
+dataset_dir = '/home/shubham/Research/plant_pathology_dl/Datasets/'
+save_path = '/home/shubham/Research/plant_pathology_dl/test_model/'
 
 # TF_weights='imagenet'
 TF_weights=None

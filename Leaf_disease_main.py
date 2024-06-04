@@ -94,24 +94,30 @@ def main(item, obj, model_name,dataset_dir,save_path,saveornot, fig_size = 256, 
             
         else:
             data, diseaseLabels, PlantLabels, categ, dir_save, p_type, d_type  = load_data.load_data(dataset_dir,save_dir, model_name, item, obj, fig_size)
-            
+            print("Data Loaded!")
             data=np.array(data).reshape(-1,fig_size,fig_size,3)
+            print('1')
             diseaseLabels = np.array(diseaseLabels)
+            print('2')
             PlantLabels = np.array(PlantLabels)
+            print('3')
             
             diseaseLB = LabelBinarizer()
             PlantLB = LabelBinarizer()
+            print("Label Binarizer Fitting 1")
             diseaseLabels = diseaseLB.fit_transform(diseaseLabels)
+            print("Label Binarizer Fitting 2")
             PlantLabels = PlantLB.fit_transform(PlantLabels)
             numDis=len(diseaseLB.classes_)
             numPlants=len(PlantLB.classes_)
-        
+            print("Data Splitting!")
             split = train_test_split(data, diseaseLabels, PlantLabels, test_size=0.2, random_state = 50)
             (trainX, testX, trainDiseaseY, testDiseaseY, trainPlantY, testPlantY) = split
+            print("Train Test Split Done!")
     
         
     
-    
+    print('Data Loaded!')
     es = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.003, patience=50, verbose=1, mode='auto') 
     mc = callbacks.ModelCheckpoint(dir_save+'model_save/ModelCheckpoint/'+model_name+'_ModelCheck_'+str(fig_size)+'_d_'+DEVICES+'.h5', monitor='val_loss', verbose=1, save_best_only=True, save_weights_only=False, mode='min', period=1)
     
